@@ -1,40 +1,36 @@
 import React, { useState } from 'react';
 
 function App() {
-    // adding state here.
-
-  const handleClick = (value) => {
-    // code here.
-  };
+  // adding state here.
+  const [choices, setChoices] = useState();
 
   return (
     <div>
-      <button>Fullname</button>
-      <button>Age</button>
-      <button>Picture</button>
-      <DisplayInfo />
+      <button onClick={() => setChoices("Fullname")}>Fullname</button>
+      <button onClick={() => setChoices("Age")}>Age</button>
+      <button onClick={() => setChoices("Picture")}>Picture</button>
+      <DisplayInfo choices={choices} />
     </div>
   );
 }
-
 function DisplayInfo(props) {
+  const { choices } = props;
 
-  let ___;
-  if (___ === 'Fullname') {
-    ___ = <h2>John Doe</h2>;
-  } else if (___ === 'Age') {
-    ___ = <h2>30</h2>;
-  } else if (___ === 'Picture') {
-    ___ = <img src="https://via.placeholder.com/150" alt="Placeholder" />;
+  let returnHTML;
+  if (choices === "Fullname") {
+    returnHTML = <h2>John Doe</h2>;
+  } else if (choices === "Age") {
+    returnHTML = <h2>30</h2>;
+  } else if (choices === "Picture") {
+    returnHTML = (
+      <img src="https://via.placeholder.com/150" alt="Placeholder" />
+    );
   } else {
-    ___ = <p>Please select an option.</p>;
+    returnHTML = <p>Please select an option.</p>;
   }
 
-  return (
-    <div>
-      {___}
-    </div>
-  );
+  return <div>{returnHTML}</div>;
 }
+
 
 export default App;

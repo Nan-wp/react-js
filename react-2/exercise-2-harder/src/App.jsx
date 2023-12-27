@@ -30,26 +30,91 @@ function App() {
     <div id="app">
       <h1>Enter Data</h1>
       <PostContainer />
-      <FeedSection />
+      <FeedSection posts={posts} />
     </div>
   );
 }
 
 const PostContainer = () => {
   return (
+    <div className="post-container">
+      <div className="post-header">
+        <img className="post-avatar" src="avatar.jpg" alt="Your Avatar" />
+        <div className="post-author">You</div>
+      </div>
+      <div className="post-content">
+        <textarea
+          className="post-input"
+          placeholder="What's on your mind?"
+        ></textarea>
+      </div>
+      <div className="post-actions">
+        <button className="post-button">Post</button>
+      </div>
+    </div>
     
   );
 };
 
-const FeedSection = () => {
+const FeedSection = ({posts}) => {
+  const post1= posts[0];
+  const post2= posts[1];
+  const post3= posts[2];
   return (
-    
+    <div className="feed">
+      <Post 
+      author={post1.author}
+      time={post1.time}
+      content= {post1.content}
+      avatar={post1.avatar}
+      image={post1.image}
+      />
+       <Post 
+      author={post2.author}
+      time={post2.time}
+      content= {post2.content}
+      avatar={post2.avatar}
+      image={post2.image}
+      />
+      <Post 
+      author={post3.author}
+      time={post3.time}
+      content= {post3.content}
+      avatar={post3.avatar}
+      image={post3.image}
+      />
+
+    </div>
   );
 };
 
-const Post = () => {
+const Post = (props) => {
+  const {author , time , content , avatar , image} = props;
   return (
+    
+    <div class="post">
+        <div class="post-header">
+          <img
+            class="post-avatar"
+            src={avatar}
+            alt="User 1"
+          />
+          <div>
+            <div class="post-author">{author}</div>
+            <div class="post-time">{time}</div>
+          </div>
+        </div>
+        <div class="post-content">{content}</div>
+        <img
+          class="post-image"
+          src={image}
+          alt="Post 1"
+        />
+        <button>DELETE</button>
+      </div>
+      
 
+    
   )
 }
 

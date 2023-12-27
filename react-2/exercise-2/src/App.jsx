@@ -51,6 +51,7 @@ const FeedSection = () => {
           src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png"
           alt="Post 1"
         />
+         <button>DELETE</button>
       </div>
 
       <div class="post">
@@ -71,6 +72,7 @@ const FeedSection = () => {
           src="https://images.rawpixel.com/image_png_social_square/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcm00NTYtMDA3YS5wbmc.png"
           alt="Post 2"
         />
+        <button>DELETE</button>
       </div>
 
       <div class="post">
@@ -91,7 +93,9 @@ const FeedSection = () => {
           src="https://images.rawpixel.com/image_png_social_square/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvcm00NTYtMDA3YS5wbmc.png"
           alt="Post 3"
         />
+        <button>DELETE</button>
       </div>
+      
     </div>
   );
 };

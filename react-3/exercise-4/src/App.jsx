@@ -1,29 +1,41 @@
 import usePost from "./hook/usePost";
 import { getUser } from "./hook/me";
 import "./App.css";
+import { useState } from "react";
 
 function App() {
   const { get, remove, update, create } = usePost();
   const posts = get();
+  const [content, setContent]=useState();
+  const [image, setImage] = useState();
+  
 
   const createPost = (content, image) => {
     let id = `id-${Math.floor(Math.random() * 10000)}`; // generate id here by Math.random() (please use integer)
     let time = new Date().toDateString(); // generate timestamp here by (new Date().toDateString())
     const user = getUser();
-    let data = {};
+    let data = {
+      id:id,
+      image:image,
+      author:user.author,
+      avatar:user.avatar,
+      time:time,
+      content:content,
+    };
     create(data);
   };
 
   return (
     <div id="app">
       <h1>Enter Data</h1>
-      <PostContainer />
+      <PostContainer image={image} setImage={setImage} content={content} setContent={setContent} createPost={createPost}/>
       <FeedSection posts={posts} removeHandler={remove} />
+      
     </div>
   );
 }
 
-const PostContainer = () => {
+const PostContainer = ({setContent,setImage,createPost,image,content}) => {
   return (
     <div className="post-container">
       <div className="post-header">
@@ -34,10 +46,16 @@ const PostContainer = () => {
         <textarea
           className="post-input"
           placeholder="What's on your mind?"
+          onChange={(ev)=>setContent(ev.target.value)}
         ></textarea>
+         <input type="text" 
+          className="post-input"
+          placeholder="Image"
+          onChange={(ev)=>setImage(ev.target.value)}
+        ></input>
       </div>
       <div className="post-actions">
-        <button className="post-button">Post</button>
+        <button className="post-button" onClick={()=>createPost(content,image)}>Post</button>
       </div>
     </div>
   );
